@@ -1,0 +1,8 @@
+# Directorio de node_modules
+node_modules/
+
+# Este archivo
+# .gitignore
+
+# Configuraciones de entorno
+.env
