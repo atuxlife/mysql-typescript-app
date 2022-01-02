@@ -19,6 +19,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 function connect() {
     return __awaiter(this, void 0, void 0, function* () {
+        // Creando conexión de la base de datos. Esta configuración se guarda en el archivo .env
         const connection = yield (0, promise_1.createPool)({
             host: process.env.HOST,
             user: process.env.DB_USER,
@@ -27,7 +28,7 @@ function connect() {
             connectionLimit: 10,
             multipleStatements: true
         });
-        return connection;
+        return connection; // Retornamos la conexión
     });
 }
 exports.connect = connect;

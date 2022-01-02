@@ -10,7 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updatePost = exports.deletePost = exports.getPost = exports.createPost = exports.getPosts = void 0;
-const database_1 = require("../database");
+const database_1 = require("../database"); // Importa la conexión de la base de datos
+// Lista todos los posts por GET. Responde con una promesa.
 function getPosts(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const conn = yield (0, database_1.connect)();
@@ -20,9 +21,10 @@ function getPosts(req, res) {
 }
 exports.getPosts = getPosts;
 ;
+// Crear un post por el método POST. Responde con un JSON.
 function createPost(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const newPost = req.body;
+        const newPost = req.body; // Recibe el JSON desde el body de la petición
         const conn = yield (0, database_1.connect)();
         yield conn.query('INSERT INTO posts SET ?', [newPost]);
         return res.json({
@@ -32,6 +34,7 @@ function createPost(req, res) {
 }
 exports.createPost = createPost;
 ;
+// Listar los datos de un post recibiendo por GET un parámetro. Responde con una promesa.
 function getPost(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const id = req.params.postId;
@@ -41,6 +44,7 @@ function getPost(req, res) {
     });
 }
 exports.getPost = getPost;
+// Recibe por DELETE el parámetro del ID del post que va a borrar. Responde con un JSON.
 function deletePost(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const id = req.params.postId;
@@ -52,6 +56,8 @@ function deletePost(req, res) {
     });
 }
 exports.deletePost = deletePost;
+// Método que viene de une petición PUT, recibe el ID del post a editar y en el cuerpo de la petición recibe el JSON
+// de los datos que va a modificar.
 function updatePost(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const id = req.params.postId;
