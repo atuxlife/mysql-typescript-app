@@ -14,4 +14,4 @@ export async function connect(){
         multipleStatements: true
     });
     return connection; // Retornamos la conexión
-}
+};
